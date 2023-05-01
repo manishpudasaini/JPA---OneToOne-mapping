@@ -5,7 +5,9 @@ import com.jpapractice.practice.entity.Student;
 
 import java.util.List;
 
+
 public interface StudentService {
     Student addStudent(Student student);
+    Student getStudent(int id);
 
 }

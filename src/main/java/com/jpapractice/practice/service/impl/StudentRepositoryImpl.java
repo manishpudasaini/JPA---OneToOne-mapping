@@ -7,6 +7,8 @@ import com.jpapractice.practice.service.StudentService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class StudentRepositoryImpl implements StudentService {
@@ -18,8 +20,19 @@ public class StudentRepositoryImpl implements StudentService {
 
     @Override
     public Student addStudent(Student student) {
-        Student std = studentRepository.save(student);
-        return std;
+        Student student1 = Student.builder()
+                .phone(student.getPhone())
+                .student_name(student.getStudent_name())
+                .address(student.getAddress())
+                .build();
+         studentRepository.save(student1);
+        return student1;
+    }
+
+    @Override
+    public Student getStudent(int id) {
+        Student stdList =  studentRepository.findById(id).get();
+        return stdList;
     }
 
 

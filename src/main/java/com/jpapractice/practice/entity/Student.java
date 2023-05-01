@@ -2,11 +2,13 @@ package com.jpapractice.practice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "student")
@@ -17,8 +19,9 @@ public class Student {
     private String student_name;
     private String phone;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    Address address;
+    @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
+    private Address address;
+
+
 
 }
