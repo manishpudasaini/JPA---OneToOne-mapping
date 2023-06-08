@@ -1,5 +1,7 @@
 package com.jpapractice.practice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,12 +16,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int student_id;
     private String student_name;
     private String phone;
 
-    @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "address_id",
+            referencedColumnName = "address_id"
+    )
     private Address address;
 
 

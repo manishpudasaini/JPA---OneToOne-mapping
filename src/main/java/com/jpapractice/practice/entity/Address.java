@@ -1,5 +1,6 @@
 package com.jpapractice.practice.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,11 +20,8 @@ public class Address {
     private String country;
     private String district;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "student_id",
-            referencedColumnName = "student_id"
-    )
+    @JsonBackReference
+    @OneToOne(mappedBy = "address")
     private Student student;
 
 

@@ -25,15 +25,13 @@ public class MyController {
     public Student addStudent(@RequestBody Student student){
 
        Student student1 =  studentService.addStudent(student);
-        System.out.println(student1);
+        //System.out.println(student1);
        return student1;
     }
 
     @PostMapping("/address")
     public Address addAddress(@RequestBody Address address){
-
         Address address1 = addressService.addAddress(address);
-        System.out.println(address1);
         return address1;
     }
 
@@ -41,7 +39,7 @@ public class MyController {
     @GetMapping("/student/get/{id}")
     public Student getStudent(@PathVariable int id){
         Student std = studentService.getStudent(id);
-        System.out.println(std);
+        //System.out.println(std);
         return std;
     }
 
