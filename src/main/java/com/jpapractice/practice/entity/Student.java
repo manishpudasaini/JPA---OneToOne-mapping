@@ -22,7 +22,7 @@ public class Student {
     private String phone;
 
     @JsonManagedReference
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "address_id",
             referencedColumnName = "address_id"

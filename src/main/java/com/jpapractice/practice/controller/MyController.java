@@ -43,6 +43,11 @@ public class MyController {
         return std;
     }
 
+    @GetMapping("/address/get/{id}")
+    public Address getAddress(@PathVariable int id){
+      return addressService.getAddress(id);
+    }
+
 
 
 

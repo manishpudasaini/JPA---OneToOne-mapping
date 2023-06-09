@@ -5,6 +5,9 @@ import com.jpapractice.practice.repository.AddressRepository;
 import com.jpapractice.practice.service.AddressService;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Service
 public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
@@ -23,5 +26,10 @@ public class AddressServiceImpl implements AddressService {
 
         addressRepository.save(address1);
         return address1;
+    }
+
+    @Override
+    public Address getAddress(int id) {
+        return addressRepository.findById(id).get();
     }
 }
